@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #0A0C0F;
+  --color-brand-bg2: #0F1115;
+  --color-brand-card: #141720;
+  --color-brand-card2: #1A1D26;
+  
+  --color-brand-green: #00C896;
+  --color-brand-green-dim: rgba(0, 200, 150, 0.12);
+  --color-brand-green-brd: rgba(0, 200, 150, 0.25);
+  
+  --color-brand-yellow: #FFB020;
+  --color-brand-yellow-dim: rgba(255, 176, 32, 0.12);
+  --color-brand-yellow-brd: rgba(255, 176, 32, 0.25);
+  
+  --color-brand-red: #FF4D4D;
+  --color-brand-red-dim: rgba(255, 77, 77, 0.12);
+  --color-brand-red-brd: rgba(255, 77, 77, 0.25);
+  
+  --color-brand-blue: #4D9EFF;
+  --color-brand-blue-dim: rgba(77, 158, 255, 0.12);
+  --color-brand-bg3: #181B24;
+  --color-brand-purple: #A78BFA;
+  
+  --color-brand-text: #F0F2F5;
+  --color-brand-text2: #8B90A0;
+  --color-brand-text3: #555B6E;
+  
+  --color-brand-border: rgba(255, 255, 255, 0.07);
+
+  --font-cairo: "Cairo", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-text font-cairo antialiased;
+    direction: rtl; /* Setting RTL document */
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+}
+
+.glass-panel {
+  @apply bg-brand-card border border-brand-border rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.2)];
+}
+
+.glass-panel-2 {
+  @apply bg-brand-card2 border border-brand-border rounded-xl;
+}
+
+.text-number {
+  @apply font-inter;
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

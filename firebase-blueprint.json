@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and role management",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["Admin", "Sales", "Worker"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "name", "role", "createdAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Workshop order record",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string" },
+        "mobile": { "type": "string" },
+        "material": { "type": "string", "enum": ["نحاس", "فضة"] },
+        "productDetails": { "type": "string" },
+        "totalPrice": { "type": "number" },
+        "deposit": { "type": "number" },
+        "status": { "type": "string" },
+        "phase": { "type": "integer" },
+        "date": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["customerName", "mobile", "material", "productDetails", "totalPrice", "deposit", "status", "phase", "date", "createdAt", "updatedAt"]
+    },
+    "Role": {
+      "title": "Role",
+      "description": "System role and its permissions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "color": { "type": "string" },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "enabled": { "type": "boolean" }
+            }
+          }
+        }
+      },
+      "required": ["id", "name", "color", "permissions"]
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "User",
+      "description": "Collection of users and their roles"
+    },
+    "orders": {
+      "schema": "Order",
+      "description": "Collection of workshop orders"
+    },
+    "roles": {
+      "schema": "Role",
+      "description": "Collection of system roles and permissions"
+    }
+  }
+}
